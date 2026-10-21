@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Title, description, canonical in JSON-LD strani vstavi prerender (scripts/prerender.mjs)
+         iz <SEO> komponente vsake strani; v razvoju jih nastavi Helmet na klientu. -->
+    <!--app-head-->
+
+    <!-- Razred .js omogoči nežen prikaz ob scrollu; brez JS je vsebina vidna takoj. -->
+    <script>document.documentElement.classList.add('js')</script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://las.si/#website",
+          "url": "https://las.si",
+          "name": "LAS lasni atelje suzana",
+          "inLanguage": "sl-SI",
+          "publisher": { "@id": "https://las.si/#business" }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://las.si/#business",
+          "name": "LAS lasni atelje suzana",
+          "slogan": "Prvi eko frizerski salon – razvajamo te, skrbimo za okolje",
+          "description": "Eko frizerski salon v Celju: striženje, barvanje, pramenčki in balayage, barvne korekcije, naravno rastlinsko barvanje, keratinsko ravnanje, hair botox in detox lasišča.",
+          "url": "https://las.si",
+          "image": "https://las.si/og.jpg",
+          "telephone": "+38641720551",
+          "email": "suzana.bajec@gmail.com",
+          "founder": { "@type": "Person", "name": "Suzana Bajec" },
+          "foundingDate": "2004",
+          "priceRange": "€€",
+          "currenciesAccepted": "EUR",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ljubljanska cesta 20 a",
+            "postalCode": "3000",
+            "addressLocality": "Celje",
+            "addressCountry": "SI"
+          },
+          "sameAs": [
+            "https://www.instagram.com/lasni_atelje_suzana/",
+            "https://www.facebook.com/LasniAteljeSuzana/"
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+{
+  "salon": {
+    "width": 2048,
+    "height": 1312,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "blond-po": {
+    "width": 3072,
+    "height": 4096,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "blond-prej": {
+    "width": 3072,
+    "height": 4096,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-2-po": {
+    "width": 1200,
+    "height": 1286,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-2-prej": {
+    "width": 1200,
+    "height": 1286,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-3-po": {
+    "width": 2581,
+    "height": 3441,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-3-prej": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-po": {
+    "width": 2501,
+    "height": 3096,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "keratin-prej": {
+    "width": 3024,
+    "height": 3744,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "kodrcki": {
+    "width": 3072,
+    "height": 4096,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "korekcija-po": {
+    "width": 1200,
+    "height": 1600,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "korekcija-prej": {
+    "width": 1200,
+    "height": 1600,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "naravno-pigment": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "naravno-po": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "pramen-2": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "pramen-3": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "pramen": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "romana": {
+    "width": 2001,
+    "height": 2668,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "sprememba-po": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "sprememba-prej": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "strizenje-po": {
+    "width": 2420,
+    "height": 3226,
+    "sizes": [
+      800,
+      1400
+    ]
+  },
+  "strizenje-prej": {
+    "width": 3024,
+    "height": 4032,
+    "sizes": [
+      800,
+      1400
+    ]
+  }
+}
