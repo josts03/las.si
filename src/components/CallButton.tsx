@@ -8,12 +8,15 @@ interface Props {
   short?: boolean;
 }
 
+// Polna imena razredov, da jih Tailwind najde v izvorni kodi (sestavljenih ne zazna).
+const VARIANT = { primary: 'btn-primary', dark: 'btn-dark', light: 'btn-light' } as const;
+
 /**
  * Glavni poziv na strani. Spletnega naročanja ni (želja salona): termin se dogovori po telefonu.
  */
 export function CallButton({ className = '', variant = 'primary', short = false }: Props) {
   return (
-    <a href={PHONE_HREF} className={`btn-${variant} ${className}`}>
+    <a href={PHONE_HREF} className={`${VARIANT[variant]} ${className}`}>
       <Phone className="h-4 w-4" aria-hidden="true" />
       {short ? 'Pokliči' : <>Pokliči {PHONE_DISPLAY}</>}
     </a>

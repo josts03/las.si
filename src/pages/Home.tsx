@@ -3,6 +3,7 @@ import { ArrowRight, ArrowDown } from 'lucide-react';
 import { BeforeAfter } from '../components/BeforeAfter';
 import { CallButton } from '../components/CallButton';
 import { EcoSection } from '../components/EcoSection';
+import { HeroVideo } from '../components/HeroVideo';
 import { HowToVisit } from '../components/HowToVisit';
 import { Img } from '../components/Img';
 import { InstagramStrip } from '../components/InstagramStrip';
@@ -26,50 +27,53 @@ export function Home() {
         path="/"
       />
 
-      {/* Uvod */}
-      <section className="container-x grid gap-12 pb-20 pt-6 lg:min-h-[calc(100svh-84px)] lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-16 lg:pb-16 lg:pt-4">
-        <div>
-          <p className="font-serif text-[19px] italic text-moss sm:text-[21px]">{SITE_MOTTO}</p>
-          <h1 className="mt-6 text-[52px] leading-[0.95] sm:text-[76px] lg:text-[92px] xl:text-[104px]">
-            Lepi lasje, <span className="accent text-moss">brez slabe vesti.</span>
-          </h1>
-          <p className="mt-8 max-w-[520px] text-[18px] text-stone sm:text-[19px]">
-            LAS lasni atelje suzana je prvi eko frizerski salon v Sloveniji. Od leta {FOUNDED} na Ljubljanski cesti v Celju –
-            z vrhunsko kozmetiko, naravnimi barvami in veliko srca.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <CallButton />
-            <a href="#prej-potem" className="btn-outline">
-              Poglej prej in potem <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            </a>
+      {/* Uvod: zanka salona. Na računalniku je besedilo čez video (levo spodaj),
+          na telefonu je video samostojen (pokončen izrez rok in folij), besedilo pa pod njim. */}
+      <section className="container-x pb-14 pt-1 lg:pb-16">
+        <div className="relative lg:flex lg:min-h-[calc(100svh-84px-112px)] lg:items-end lg:overflow-hidden lg:rounded-[32px] lg:bg-ink">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] bg-ink sm:aspect-[16/10] lg:absolute lg:inset-0 lg:aspect-auto lg:rounded-none">
+            <HeroVideo className="object-[76%_50%] lg:object-center" />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 hidden bg-linear-to-r from-ink/90 via-ink/60 via-45% to-ink/0 lg:block"
+            />
+            <LogoSquare className="absolute right-4 top-4 w-[76px] rounded-[16px] sm:right-6 sm:top-6 sm:w-[108px]" />
           </div>
-          <dl className="mt-12 grid max-w-[560px] grid-cols-3 border-t border-ink/10 pt-6">
-            <div>
-              <dt className="text-[13px] text-stone">Odprto od</dt>
-              <dd className="mt-1 text-[24px] font-bold tracking-[-0.03em]">{FOUNDED}</dd>
+          <div className="relative z-10 pt-9 lg:max-w-[760px] lg:p-14 lg:text-paper">
+            <p className="font-serif text-[19px] italic text-moss sm:text-[21px] lg:text-leaf">{SITE_MOTTO}</p>
+            <h1 className="mt-5 text-[50px] leading-[0.95] sm:text-[72px] lg:text-[88px] xl:text-[100px]">
+              Lepi lasje, <span className="accent text-moss lg:text-leaf">brez slabe vesti.</span>
+            </h1>
+            <p className="mt-6 max-w-[520px] text-[17px] text-stone sm:text-[19px] lg:text-paper/80">
+              LAS lasni atelje suzana je prvi eko frizerski salon v Sloveniji. Od leta {FOUNDED} na Ljubljanski cesti v Celju –
+              z vrhunsko kozmetiko, naravnimi barvami in veliko srca.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <CallButton className="lg:bg-paper lg:text-ink lg:hover:bg-sage" />
+              <a
+                href="#prej-potem"
+                className="btn border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-paper lg:border-paper/40 lg:text-paper lg:hover:border-paper lg:hover:bg-paper lg:hover:text-ink"
+              >
+                Poglej prej in potem <ArrowDown className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
-            <div className="border-l border-ink/10 pl-4 sm:pl-6">
-              <dt className="text-[13px] text-stone">Priporočila</dt>
-              <dd className="mt-1 text-[24px] font-bold tracking-[-0.03em]">{FB_RECOMMEND.percent}&nbsp;%</dd>
-            </div>
-            <div className="border-l border-ink/10 pl-4 sm:pl-6">
-              <dt className="text-[13px] text-stone">Delovni čas</dt>
-              <dd className="mt-1 text-[17px] font-semibold leading-tight tracking-[-0.02em] sm:text-[20px]">po dogovoru</dd>
-            </div>
-          </dl>
+          </div>
         </div>
 
-        <div className="relative pb-10 pl-8 sm:pl-16 lg:pb-12">
-          <Img name="pramen" priority className="aspect-[4/5] rounded-[30px]" sizes="(min-width: 1024px) 46vw, 92vw" />
-          <Img
-            name="keratin-2-po"
-            priority
-            className="!absolute bottom-0 left-0 aspect-[3/4] w-[40%] rounded-[22px] ring-[6px] ring-paper sm:ring-8"
-            imgClassName="object-[30%_50%]"
-            sizes="(min-width: 1024px) 18vw, 38vw"
-          />
-          <LogoSquare className="absolute -top-3 right-4 w-[92px] rounded-[18px] shadow-[0_20px_40px_-20px_rgba(29,33,22,0.5)] sm:w-[120px] lg:-right-4" />
-        </div>
+        <dl className="mt-6 grid max-w-[640px] grid-cols-3">
+          <div>
+            <dt className="text-[13px] text-stone">Odprto od</dt>
+            <dd className="mt-1 text-[24px] font-bold tracking-[-0.03em]">{FOUNDED}</dd>
+          </div>
+          <div className="border-l border-ink/10 pl-4 sm:pl-6">
+            <dt className="text-[13px] text-stone">Priporočila</dt>
+            <dd className="mt-1 text-[24px] font-bold tracking-[-0.03em]">{FB_RECOMMEND.percent}&nbsp;%</dd>
+          </div>
+          <div className="border-l border-ink/10 pl-4 sm:pl-6">
+            <dt className="text-[13px] text-stone">Delovni čas</dt>
+            <dd className="mt-1 text-[17px] font-semibold leading-tight tracking-[-0.02em] sm:text-[20px]">po dogovoru</dd>
+          </div>
+        </dl>
       </section>
 
       <Marquee />

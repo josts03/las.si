@@ -8,3 +8,6 @@ coverage/
 !.env.example
 .ssr/
 .claude/settings.local.json
+
+# Delovne variante videa (veliki originali iz Higgsfielda)
+video-variante/
