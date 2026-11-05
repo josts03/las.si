@@ -1,34 +1,47 @@
 import { useEffect, useRef, useState } from 'react';
-import { preload } from 'react-dom';
 import { Pause, Play } from 'lucide-react';
 
-const POSTER = '/video/salon-poster.webp';
+/** Do te širine dobi stran pokončni izrez 4 : 5 (1080 × 1350), nad njo ležečega 16 : 9 (1920 × 1080). */
+const MOBILE = '(max-width: 639px)';
 
 /**
  * Zanka salona v ozadju naslovnice: roke frizerke pri delu (Higgsfield, iz naslovne fotografije
  * s Facebooka; obrazi niso vidni). Konec videa se prelije v začetek, zato se vrti brez skoka.
- * Brez zvoka, z gumbom za ustavitev; ob »zmanjšanem gibanju« ostane samo poster.
+ * Pod videom je statična slika (<picture>, ločena za telefon in računalnik); video se pokaže, ko
+ * začne teči. Brez zvoka, z gumbom za ustavitev; ob »zmanjšanem gibanju« ostane samo slika.
  */
 export function HeroVideo({ className = '' }: { className?: string }) {
-  preload(POSTER, { as: 'image', fetchPriority: 'high' });
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
     // React atributa muted ne izpiše v prerenderan HTML, brskalnik pa brez njega ne dovoli samodejnega predvajanja.
     video.muted = true;
-    const onPlay = () => setPlaying(true);
+    const onPlay = () => {
+      setPlaying(true);
+      setVisible(true);
+    };
     const onPause = () => setPlaying(false);
-    video.addEventListener('play', onPlay);
+    video.addEventListener('playing', onPlay);
     video.addEventListener('pause', onPause);
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      video.play().catch(() => {});
-    }
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced) video.play().catch(() => {});
+
+    // Brskalnik izbere <source> samo ob nalaganju; ob prehodu meje (npr. razširitev okna) ga izberemo znova.
+    const mobile = window.matchMedia(MOBILE);
+    const onBreakpoint = () => {
+      const wasPlaying = !video.paused;
+      video.load();
+      if (wasPlaying || !reduced) video.play().catch(() => {});
+    };
+    mobile.addEventListener('change', onBreakpoint);
     return () => {
-      video.removeEventListener('play', onPlay);
+      video.removeEventListener('playing', onPlay);
       video.removeEventListener('pause', onPause);
+      mobile.removeEventListener('change', onBreakpoint);
     };
   }, []);
 
@@ -39,18 +52,24 @@ export function HeroVideo({ className = '' }: { className?: string }) {
     else video.pause();
   };
 
+  const fill = `absolute inset-0 h-full w-full object-cover ${className}`;
   return (
     <>
+      <picture>
+        <source media={MOBILE} srcSet="/video/salon-mobile-poster.webp" type="image/webp" />
+        <img src="/video/salon-poster.webp" alt="" fetchPriority="high" decoding="async" className={fill} />
+      </picture>
       <video
         ref={ref}
-        className={`absolute inset-0 h-full w-full object-cover ${className}`}
-        poster={POSTER}
+        className={`${fill} transition-opacity duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
         muted
         loop
         playsInline
         preload="auto"
         aria-hidden="true"
       >
+        <source media={MOBILE} src="/video/salon-mobile.webm" type="video/webm" />
+        <source media={MOBILE} src="/video/salon-mobile.mp4" type="video/mp4" />
         <source src="/video/salon.webm" type="video/webm" />
         <source src="/video/salon.mp4" type="video/mp4" />
       </video>
